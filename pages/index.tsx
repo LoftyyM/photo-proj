@@ -1,45 +1,52 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import Link from 'next/link'
-import { Tab } from '@headlessui/react'
-import Masonry from 'react-masonry-css'
-import classNames from 'classnames'
+import Head from "next/head";
+import Image from "next/image";
+import { Inter } from "next/font/google";
+import Link from "next/link";
+import { Tab } from "@headlessui/react";
+import Masonry from "react-masonry-css";
+import classNames from "classnames";
 
-import bgIMG from '../public/bgIMG.jpg'
-import IMG1 from '../public/photos/IMG-1.jpg'
-import IMG2 from '../public/photos/IMG-2.jpg'
-import IMG3 from '../public/photos/IMG-3.jpg'
-import IMG4 from '../public/photos/IMG-4.jpg'
-import IMG5 from '../public/photos/IMG-5.jpg'
+import { LightGallery } from "lightgallery/lightgallery";
+import { useRef } from "react";
+import LightGalleryComponent from "lightgallery/react";
 
+// import styles
+import "lightgallery/css/lightgallery.css";
+import "lightgallery/css/lg-zoom.css";
+import "lightgallery/css/lg-thumbnail.css";
 
-const inter = Inter({ subsets: ['latin'] })
+// import plugins
+import lgThumbnail from "lightgallery/plugins/thumbnail";
+import lgZoom from "lightgallery/plugins/zoom";
+
+//IMG testing + BG
+import bgIMG from "../public/bgIMG.jpg";
+import IMG1 from "../public/photos/IMG-1.jpg";
+import IMG2 from "../public/photos/IMG-2.jpg";
+import IMG3 from "../public/photos/IMG-3.jpg";
+import IMG4 from "../public/photos/IMG-4.jpg";
+import IMG5 from "../public/photos/IMG-5.jpg";
+
+const inter = Inter({ subsets: ["latin"] });
 const tabs = [
   {
-    key:'All', 
-    display: 'All'},
-    {
-      key:'Luis',
-      display:'Luisccam'
+    key: "All",
+    display: "All",
   },
   {
-    key:'Sean',
-    display:'Loftyy'
-
-  }
-]
-const images = [
-
-  IMG1,
-  IMG2,
-  IMG3,
-  IMG4,
-  IMG5,
-
-]
+    key: "Luis",
+    display: "Luisccam",
+  },
+  {
+    key: "Sean",
+    display: "Loftyy",
+  },
+];
+const images = [IMG1, IMG2, IMG3, IMG4, IMG5];
 
 export default function Home() {
+  const lightboxRef = useRef<LightGallery | null>(null);
+
   return (
     <div className=" h-full bg-stone-900 bg-center bg-cover overflow-auto ">
       <Head>
@@ -50,83 +57,96 @@ export default function Home() {
       </Head>
 
       <Image
-            className="object-left"
-            src={bgIMG} 
-            alt="bg"
-            placeholder="blur"
-            priority
-            />
+        className="object-left"
+        src={bgIMG}
+        alt="bg"
+        placeholder="blur"
+        priority
+      />
 
-      <header className="fixed top-0 w-full z-10 flex justify-between items-center h-[80px] px-10 bg-stone-900"> 
-        <span className="uppercase text-lg font-medium ">Photography Portfolio</span>
+      <header className="fixed top-0 w-full z-20 flex justify-between items-center h-[70px] px-10 bg-stone-900">
+        <span className="uppercase text-md font-medium ">
+          Photography Portfolio
+        </span>
 
-        <Link href="#" className="rounded-3xl bg-white text-stone-700 px-3 py-2 hover:bg-opacity-90">
+        <Link
+          href="#"
+          className="rounded-3xl bg-white text-stone-700 px-3 py-2 hover:bg-opacity-90"
+        >
           Get in touch
         </Link>
-      
       </header>
-      
+
       <main className="pt-[110px]">
         <div className="flex flex-col items-center h-full">
+          <Tab.Group>
+            <Tab.List className="flex items-center gap-12 ">
+              {tabs.map((tab) => (
+                <Tab key={tab.key} className="p-2">
+                  {({ selected }) => (
+                    <span
+                      className={classNames(
+                        "uppercase",
+                        selected ? "text-white" : "text-stone-600"
+                      )}
+                    >
+                      {tab.display}
+                    </span>
+                  )}
+                </Tab>
+              ))}
+            </Tab.List>
+            <Tab.Panels className="h-full bg-stone-900 bg-opacity-80 h-full max-w-[900px] w-full p-2 sm:p-4 my-6">
+              <Tab.Panel>
+                <Masonry
+                  breakpointCols={2}
+                  className="flex gap-4"
+                  columnClassName=""
+                >
+                  {images.map((image, idx) => (
+                    <Image
+                      key={image.src}
+                      src={image}
+                      alt="placeholder"
+                      className="my-4 hover:opacity-80 cursor-pointer"
+                      placeholder="blur"
+                      onClick={() => {
+                        lightboxRef.current?.openGallery(idx);
+                      }}
+                    />
+                  ))}
+                </Masonry>
 
-        <Tab.Group>
-      <Tab.List className="flex items-center gap-12 ">
+                <LightGalleryComponent
+                  onInit={(ref) => {
+                    if (ref) {
+                      lightboxRef.current = ref.instance;
+                    }
+                  }}
+                  speed={500}
+                  plugins={[lgThumbnail, lgZoom]}
+                  dynamic
+                  dynamicEl={ images.map((image) => ({
 
+                    src: image.src,
+                    thumb: image.src,
 
-         {tabs.map(tab => (
-          <Tab key={tab.key} className="p-2">
-          {({selected}) =>(
-          <span className={classNames("uppercase", selected ? 'text-white': 'text-stone-600')}>
-            {tab.display}
-          </span>
-          )}
-        </Tab>
-         ))}
-        
-        
-      </Tab.List>
-      <Tab.Panels className="h-full bg-stone-900 bg-opacity-80 h-full max-w-[900px] w-full p-2 sm:p-4 my-6">
-        
-        <Tab.Panel>
-          <Masonry 
-            breakpointCols={2}
-            className="flex gap-4"
-            columnClassName=""
-          >
+                  }))
+                    
+                  }
+                ></LightGalleryComponent>
+              </Tab.Panel>
 
-
-
-            {images.map(image => (
-            <Image
-            key={image.src}
-            src={image} 
-            alt="placeholder"
-            className="my-4"
-            placeholder="blur"
-            />
-            ))}
-
-
-
-            </Masonry>
-        </Tab.Panel>
-
-
-        <Tab.Panel>Luisccam</Tab.Panel>
-        <Tab.Panel>Loftyy</Tab.Panel>
-      </Tab.Panels>
-    </Tab.Group>    
-
+              <Tab.Panel>Luisccam</Tab.Panel>
+              <Tab.Panel>Loftyy</Tab.Panel>
+            </Tab.Panels>
+          </Tab.Group>
         </div>
-      
-
       </main>
 
       <footer className="h-[90px] flex justify-center items-center uppercase text-lg font-medium">
-        
-       <p> FOOTER PLACEHOLDER </p>
-
+        <p> FOOTER PLACEHOLDER </p>
       </footer>
     </div>
-  )
+  );
 }
