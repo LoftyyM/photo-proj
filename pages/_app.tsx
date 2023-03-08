@@ -11,7 +11,7 @@ const encode = Encode_Sans({
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <div className={`${encode.variable} font-sans`}>
+    <div className={`${encode.variable} font-sans h-full`}>
   <Component
    {...pageProps}
    />
