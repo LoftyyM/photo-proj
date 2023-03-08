@@ -7,6 +7,13 @@ import Masonry from 'react-masonry-css'
 import classNames from 'classnames'
 
 
+import IMG1 from '../public/photos/IMG-1.jpg'
+import IMG2 from '../public/photos/IMG-2.jpg'
+import IMG3 from '../public/photos/IMG-3.jpg'
+import IMG4 from '../public/photos/IMG-4.jpg'
+import IMG5 from '../public/photos/IMG-5.jpg'
+
+
 const inter = Inter({ subsets: ['latin'] })
 const tabs = [
   {
@@ -22,7 +29,7 @@ const tabs = [
 
   }
 ]
-
+const images = []
 export default function Home() {
   return (
     <div className=" h-full bg-[url('/photo-bg.jpg')] bg-center bg-cover overflow-auto ">
@@ -68,11 +75,21 @@ export default function Home() {
             breakpointCols={2}
             className="flex gap-4"
             columnClassName="">
-            <img src="/photos/tormented.jpg" alt="tormented" className="my-4"/>
-            <img src="/photos/medusa.jpg" alt="medusa" className="my-4"/>
-            <img src="/photos/Foggy Night -01.jpg" alt="fog1" className="my-4"/>
-            <img src="/photos/Foggy Night -02.jpg" alt="fog2" className="my-4"/>
-            <img src="/photos/Foggy Night -03.jpg" alt="fog3" className="my-4"/>
+
+            <Image src={IMG1} alt="placeholder"/>
+            <Image src={IMG2} alt="placeholder"/>
+            <Image src={IMG3} alt="placeholder"/>
+            <Image src={IMG4} alt="placeholder"/>
+            <Image src={IMG5} alt="placeholder"/>
+
+
+            {/*<img src="/photos/IMG-1.jpg" alt="tormented" className="my-4"/>
+            <img src="/photos/IMG-2.jpg" alt="medusa" className="my-4"/>
+            <img src="/photos/IMG-3.jpg" alt="fog1" className="my-4"/>
+            <img src="/photos/IMG-4.jpg" alt="fog2" className="my-4"/>
+          <img src="/photos/IMG-5.jpg" alt="fog3" className="my-4"/>*/}
+
+
           </Masonry>
         </Tab.Panel>
 
