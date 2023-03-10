@@ -44,9 +44,8 @@ const tabs = [
     display: "Loftyy",
   },
 ];
-const images = [IMG1, IMG2, IMG3, IMG4, IMG5];
 
-export default function Home() {
+export default function Home({ images }: { images: Image[] }) {
   const lightboxRef = useRef<LightGallery | null>(null);
 
   return (
@@ -210,3 +209,24 @@ export default function Home() {
     </div>
   );
 }
+
+export async function getStaticProps() {
+  const supabaseAdmin = createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL || "",
+    process.env.SUPABASE_SERVICE_ROLE_KEY || ""
+  );
+  const { data } = await supabaseAdmin.from("images").select("*").order("id");
+  return {
+    props: {
+      images: data,
+    },
+  };
+}
+
+type Image = {
+  id: number;
+  href: string;
+  imageSrc: string;
+  name: string;
+  username: string;
+};
