@@ -65,7 +65,7 @@ export default function Home() {
         </span>
 
         <Link
-          href="/contact"
+          href="#"
           className="rounded-3xl bg-white text-stone-700 px-3 py-2 hover:bg-opacity-90"
         >
           Get in touch
