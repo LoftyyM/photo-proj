@@ -45,7 +45,19 @@ const tabs = [
   },
 ];
 
+<<<<<<< Updated upstream
 export default function Home({ images }: { images: Image[] }) {
+=======
+// Tipo Image
+type Image = {
+  id: number;
+  href: string;
+  imageSrc: string;
+  name: string;
+  username: string;
+};
+
+>>>>>>> Stashed changes
   const lightboxRef = useRef<LightGallery | null>(null);
 
   return (
@@ -98,18 +110,15 @@ export default function Home({ images }: { images: Image[] }) {
                   columnClassName=""
                 >
                   {images.map((image, idx) => (
-                    <Image
-                      key={image.src}
-                      src={image}
-                      alt="placeholder"
-                      className="my-4 hover:opacity-80 cursor-pointer"
-                      placeholder="blur"
-                      onClick={() => {
-                        lightboxRef.current?.openGallery(idx);
-                      }}
-                    />
+                    <Image key={image.id} image={image} alt="placeholder"
+                    className="my-4 hover:opacity-80 cursor-pointer"
+                    placeholder="blur"
+                    onClick={() => {
+                      lightboxRef.current?.openGallery(idx);
+                  }}
+                  ></Image>
                   ))}
-                </Masonry>
+                                  </Masonry>
 
                 <LightGalleryComponent
                   onInit={(ref) => {
@@ -208,8 +217,22 @@ export default function Home({ images }: { images: Image[] }) {
       </footer>
     </div>
   );
+
+
+export async function getServerStatiProps() {
+  const supabaseAdmin = createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL || "",
+    process.env.SUPABASE_SERVICE_ROLE_KEY || ""
+  );
+  const { data } = await supabaseAdmin.from("images").select("*").order("id");
+  return {
+    props: {
+      images: data,
+    },
+  };
 }
 
+<<<<<<< Updated upstream
 export async function getStaticProps() {
   const supabaseAdmin = createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL || "",
@@ -230,3 +253,5 @@ type Image = {
   name: string;
   username: string;
 };
+=======
+>>>>>>> Stashed changes
