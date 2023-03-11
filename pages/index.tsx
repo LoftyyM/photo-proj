@@ -45,20 +45,8 @@ const tabs = [
   },
 ];
 
-<<<<<<< Updated upstream
 export default function Home({ images }: { images: Image[] }) {
-=======
-// Tipo Image
-type Image = {
-  id: number;
-  href: string;
-  imageSrc: string;
-  name: string;
-  username: string;
-};
-
->>>>>>> Stashed changes
-  const lightboxRef = useRef<LightGallery | null>(null);
+  // const lightboxRef = useRef<LightGallery | null>(null);
 
   return (
     <div className=" h-full bg-[url('../public/bgIMG.jpg')] bg-fixed bg-center bg-cover overflow-auto ">
@@ -104,23 +92,21 @@ type Image = {
             </Tab.List>
             <Tab.Panels className="h-full bg-stone-900 bg-opacity-80 h-full max-w-[900px] w-full p-2 sm:p-4 my-6">
               <Tab.Panel className="PANEL1">
-                <Masonry
-                  breakpointCols={2}
-                  className="flex gap-4"
-                  columnClassName=""
-                >
-                  {images.map((image, idx) => (
-                    <Image key={image.id} image={image} alt="placeholder"
-                    className="my-4 hover:opacity-80 cursor-pointer"
-                    placeholder="blur"
-                    onClick={() => {
-                      lightboxRef.current?.openGallery(idx);
-                  }}
-                  ></Image>
-                  ))}
-                                  </Masonry>
+                {images && images.length > 0 ? (
+                  <Masonry
+                    breakpointCols={2}
+                    className="flex gap-4"
+                    columnClassName=""
+                  >
+                    {images.map((image) => (
+                      <MasonryImage key={image.id} image={image} />
+                    ))}
+                  </Masonry>
+                ) : (
+                  <p>No images found</p>
+                )}
 
-                <LightGalleryComponent
+                {/*<LightGalleryComponent
                   onInit={(ref) => {
                     if (ref) {
                       lightboxRef.current = ref.instance;
@@ -130,33 +116,24 @@ type Image = {
                   plugins={[lgThumbnail, lgZoom]}
                   dynamic
                   dynamicEl={images.map((image) => ({
-                    src: image.src,
-                    thumb: image.src,
+                    src: image.imageSrc,
+                    thumb: image.imageSrc,
                   }))}
-                ></LightGalleryComponent>
+                ></LightGalleryComponent>*/}
               </Tab.Panel>
 
-              <Tab.Panel className="PANEL2">
+              {/*<Tab.Panel className="PANEL2">
                 <Masonry
                   breakpointCols={3}
                   className="flex gap-4"
                   columnClassName=""
                 >
-                  {images.map((image, idx) => (
-                    <Image
-                      key={image.src}
-                      src={image}
-                      alt="placeholder"
-                      className="my-4 hover:opacity-80 cursor-pointer"
-                      placeholder="blur"
-                      onClick={() => {
-                        lightboxRef.current?.openGallery(idx);
-                      }}
-                    />
+                  {images.map((image) => (
+                    <MasonryImage key={image.id} image={image} />
                   ))}
                 </Masonry>
 
-                <LightGalleryComponent
+                {/*<LightGalleryComponent
                   onInit={(ref) => {
                     if (ref) {
                       lightboxRef.current = ref.instance;
@@ -166,33 +143,24 @@ type Image = {
                   plugins={[lgThumbnail, lgZoom]}
                   dynamic
                   dynamicEl={images.map((image) => ({
-                    src: image.src,
-                    thumb: image.src,
+                    src: image.imageSrc,
+                    thumb: image.imageSrc,
                   }))}
                 ></LightGalleryComponent>
-              </Tab.Panel>
+                </Tab.Panel>*/}
 
-              <Tab.Panel className="PANEL3">
+              {/*<Tab.Panel className="PANEL3">
                 <Masonry
                   breakpointCols={4}
                   className="flex gap-4"
                   columnClassName=""
                 >
-                  {images.map((image, idx) => (
-                    <Image
-                      key={image.src}
-                      src={image}
-                      alt="placeholder"
-                      className="my-4 hover:opacity-80 cursor-pointer"
-                      placeholder="blur"
-                      onClick={() => {
-                        lightboxRef.current?.openGallery(idx);
-                      }}
-                    />
+                  {images.map((image) => (
+                    <MasonryImage key={image.id} image={image} />
                   ))}
                 </Masonry>
 
-                <LightGalleryComponent
+                {/*<LightGalleryComponent
                   onInit={(ref) => {
                     if (ref) {
                       lightboxRef.current = ref.instance;
@@ -202,11 +170,11 @@ type Image = {
                   plugins={[lgThumbnail, lgZoom]}
                   dynamic
                   dynamicEl={images.map((image) => ({
-                    src: image.src,
-                    thumb: image.src,
+                    src: image.imageSrc,
+                    thumb: image.imageSrc,
                   }))}
                 ></LightGalleryComponent>
-              </Tab.Panel>
+              </Tab.Panel>*/}
             </Tab.Panels>
           </Tab.Group>
         </div>
@@ -217,22 +185,7 @@ type Image = {
       </footer>
     </div>
   );
-
-
-export async function getServerStatiProps() {
-  const supabaseAdmin = createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL || "",
-    process.env.SUPABASE_SERVICE_ROLE_KEY || ""
-  );
-  const { data } = await supabaseAdmin.from("images").select("*").order("id");
-  return {
-    props: {
-      images: data,
-    },
-  };
 }
-
-<<<<<<< Updated upstream
 export async function getStaticProps() {
   const supabaseAdmin = createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL || "",
@@ -253,5 +206,15 @@ type Image = {
   name: string;
   username: string;
 };
-=======
->>>>>>> Stashed changes
+
+function MasonryImage({ image }: { image: Image }) {
+  //  const [isLoading, setLoading] = useState(true);
+
+  return (
+    <a href={image.href} className="group">
+      <div className="aspect-w-1 aspect-h-1 w-full h-full xl:aspect-w-7 xl-aspect-h-8 overflow-hidden rounded-lg bg-gray-200">
+        <Image alt="" src={image.imageSrc} fill />
+      </div>
+    </a>
+  );
+}
