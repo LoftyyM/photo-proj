@@ -1,5 +1,5 @@
-import "@component/styles/globals.css";
-import type { AppProps } from "next/app";
+import '../styles/globals.css'
+import type { AppProps } from 'next/app'
 import { Encode_Sans } from "next/font/google";
 
 const encode = Encode_Sans({
@@ -8,10 +8,11 @@ const encode = Encode_Sans({
   variable: "--encode-sans",
 });
 
-export default function App({ Component, pageProps }: AppProps) {
+export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <div className={`${encode.variable} font-sans h-full`}>
       <Component {...pageProps} />
     </div>
   );
-}
+  }
+

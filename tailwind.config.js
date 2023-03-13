@@ -9,6 +9,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      backgroundImage: {
+        "manzana-Image": "url('../public/bgIMG.jpg')",
+      },
       fontFamily: {
         sans: ["var(--encode-sans)", ...fontFamily.sans],
       },
