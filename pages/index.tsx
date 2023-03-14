@@ -355,7 +355,7 @@ export default function Gallery({
             </Tab.Group>
           </div>
         </main>
-        <DynamicFooter className={"flex lg:h-20 xl:h-30 sm:h-16 md:h-20 px-5"} />
+        <DynamicFooter className={"flex lg:h-20 xl:h-30 sm:h-16 md:h-20 px-5 py-5"} />
       </div>
     </>
   );
