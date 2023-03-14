@@ -8,14 +8,8 @@ export default function Header({ className, ...props }: { className: string }) {
 
 
   w-full
-  f-lex
-  j-ustify-between
-  i-tems-center
-  lg:h-20
-  xl:h-30
   
-  sm:h-16
-  md:h-20
+  
   px-5
   bg-stone-900
   

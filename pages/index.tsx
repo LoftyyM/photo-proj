@@ -109,7 +109,7 @@ export default function Gallery({
       </Head>
 
       <div className=" h-full bg-fixed bg-manzana-Image bg-center bg-cover overflow-auto priority  ">
-        <DynamicHeader className={"flex justify-between items-center  fixed top-0 "} />
+        <DynamicHeader className={"flex justify-between items-center  fixed top-0 lg:h-20 xl:h-30 sm:h-16 md:h-20"} />
         <div className="h-screen flex place-content-center items-center text-6xl ">
           <div className="fixed z-0">
             <h1 className="font-bold">PORTFOLIO</h1>
