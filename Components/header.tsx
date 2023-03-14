@@ -13,6 +13,7 @@ export default function Header({ className, ...props }: { className: string }) {
   overflow-auto
   
   
+  
   ${className ?? ""}
   `);
 
@@ -20,16 +21,17 @@ export default function Header({ className, ...props }: { className: string }) {
     <>
       <header className={headerClass}>
         <div>
-          <Link className="uppercase text-md font-medium text-white " href="/">
+          <Link className="uppercase text-md font-medium text-white hover:opacity-80" href="/">
             Photography Portfolio
           </Link>
         </div>
 
-        <div>
-          <Link href={"#"}>About </Link>
-        </div>
+        
 
-        <div className="flex flex-row items-center sm:gap-3 lg:gap-4 pr-2">
+        <div className="flex flex-row items-center sm:gap-3 lg:gap-4 pr-2 ">
+        <div>
+          <Link href={"#"} className="hover:opacity-70">About </Link>
+        </div>
           <Link href={"https://www.facebook.com/smithloftyy/"}>
             <FacebookIcon />
           </Link>
@@ -42,7 +44,7 @@ export default function Header({ className, ...props }: { className: string }) {
 
           <Link
             href="/contact"
-            className=" rounded-3xl bg-white text-stone-700 sm:px-3 sm:py-2  hover:bg-opacity-90 hover:bg-gray-600  hover:text-white "
+            className="  hover:opacity-70 sm:px-3 sm:py-2   text-white "
           >
             Contact
           </Link>
