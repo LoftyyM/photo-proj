@@ -11,8 +11,9 @@ export default function Header({ className, ...props }: { className: string }) {
   flex
   justify-between
   items-center
-  sm:30
-  md:40
+  sm:h-30
+  md:h-40
+  
   sm:h-16
   md:h-20
   px-5
