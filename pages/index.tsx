@@ -108,7 +108,7 @@ export default function Gallery({
       </Head>
 
       <div className=" h-full bg-fixed bg-manzana-Image bg-center bg-cover overflow-auto priority  ">
-        <DynamicHeader className={"fixed top-0 "} />
+        <DynamicHeader className={"flex fixed top-0 "} />
         <div className="h-screen flex place-content-center items-center text-6xl ">
           <div className="fixed z-0">
             <h1 className="font-bold">PORTFOLIO</h1>
@@ -354,7 +354,7 @@ export default function Gallery({
             </Tab.Group>
           </div>
         </main>
-        <DynamicFooter className={""} />
+        <DynamicFooter className={"flex"} />
       </div>
     </>
   );
