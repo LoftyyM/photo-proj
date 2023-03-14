@@ -8,9 +8,9 @@ export default function Header({ className, ...props }: { className: string }) {
 
 
   w-full
-  flex
-  justify-between
-  items-center
+  f-lex
+  j-ustify-between
+  i-tems-center
   lg:h-20
   xl:h-30
   

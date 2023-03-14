@@ -58,7 +58,8 @@ export async function getStaticProps() {
   const { data: franciscoImages } = await supabaseAdmin
     .from("images")
     .select()
-    .eq("proyecto", "Francisco").order("id");
+    .eq("proyecto", "Francisco")
+    .order("id");
   const { data: abigailImages } = await supabaseAdmin
     .from("images")
     .select()
@@ -108,7 +109,7 @@ export default function Gallery({
       </Head>
 
       <div className=" h-full bg-fixed bg-manzana-Image bg-center bg-cover overflow-auto priority  ">
-        <DynamicHeader className={"flex fixed top-0 "} />
+        <DynamicHeader className={"flex justify-between items-center  fixed top-0 "} />
         <div className="h-screen flex place-content-center items-center text-6xl ">
           <div className="fixed z-0">
             <h1 className="font-bold">PORTFOLIO</h1>
@@ -250,7 +251,7 @@ export default function Gallery({
                         )}
                         onLoadingComplete={() => setLoading(false)}
                         onClick={() => {
-                          lightboxRef.current?.openGallery(image?.id -9);
+                          lightboxRef.current?.openGallery(image?.id - 9);
                         }}
                       />
                     ))}
