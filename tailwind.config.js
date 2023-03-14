@@ -17,7 +17,7 @@ module.exports = {
       },
 
       colors: {
-        vino: "#83072d",
+        black: "#000000",
       },
     },
   },

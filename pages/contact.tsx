@@ -42,7 +42,7 @@ function ContactForm() {
       <Header className={""} />
       <div className="flex items-center justify-center h-screen">
         <form
-          className="m-auto w-full max-w-lg sm:pt-4 "
+          className="m-auto w-full max-w-lg sm:pt-4 sm:pb-4 from-gray-900 to-black bg-gradient-to-b opacity-75 rounded-2xl "
           onSubmit={handleSubmit}
         >
           <div className="flex flex-wrap mx-3 mb-6">
@@ -54,7 +54,7 @@ function ContactForm() {
                 First Name:
               </label>
               <input
-                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                className="appearance-none block w-full bg-gray-900 opacity-40 text-white-700 border border-white-900 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-black focus:opacity-100"
                 type="text"
                 id="firstName"
                 name="firstName"
@@ -71,7 +71,7 @@ function ContactForm() {
                 Last Name:
               </label>
               <input
-                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                className="appearance-none block w-full bg-gray-900 opacity-40 text-white-700 border border-white-900 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-black focus:opacity-100"
                 type="text"
                 id="lastName"
                 name="lastName"
@@ -90,7 +90,7 @@ function ContactForm() {
                 Email:
               </label>
               <input
-                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                className="appearance-none block w-full bg-gray-900 opacity-40 text-white-700 border border-white-900 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-black focus:opacity-100"
                 type="email"
                 id="email"
                 name="email"
@@ -109,7 +109,7 @@ function ContactForm() {
                 Phone:
               </label>
               <input
-                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                className="appearance-none block w-full bg-gray-900 opacity-40 text-white-700 border border-white-900 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-black focus:opacity-100"
                 type="tel"
                 id="phone"
                 name="phone"
@@ -123,7 +123,7 @@ function ContactForm() {
             <div className="w-full px-3">
               <label htmlFor="message">Message:</label>
               <textarea
-                className=" no-resize appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 h-48 resize-none"
+                className=" no-resize appearance-none block w-full bg-gray-900 opacity-40 text-white-700 border border-white-900 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-black focus:opacity-100 focus:border-gray-500 h-48 resize-none"
                 id="message"
                 name="message"
                 value={formValues.message}
@@ -135,7 +135,7 @@ function ContactForm() {
           <div className="flex justify-center md:items-center">
             <div className=" ">
               <button
-                className="shadow bg-teal-400 hover:bg-teal-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
+                className="shadow bg-gray-900 hover:bg-gray-600 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
                 type="submit"
               >
                 Send
