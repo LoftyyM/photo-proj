@@ -7,9 +7,15 @@
   body {
     height: 100%;
     color: white;
+    scroll-behavior: smooth;
   }
 
- #__next {
+  #__next {
     height: 100%;
+  }
 }
+
+.w-6 {
+  height: auto;
+  width: 3rem;
 }

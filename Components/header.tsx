@@ -1,7 +1,26 @@
 import Link from "next/link";
 import Head from "next/head";
+import { twMerge } from "tailwind-merge"
 
-export default function Header() {
+export default function Header({ className, ...props }) {
+  
+  const headerClass = twMerge(`
+  
+  w-full
+  flex
+  justify-between
+  items-center
+  sm:20
+  md:h-20
+  px-10
+  bg-stone-900
+  
+  ${className ?? ""}
+  `);
+
+
+  
+  
   return (
     <>
       <Head>
@@ -10,16 +29,15 @@ export default function Header() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="h-full"></div>
 
-      <header className="fixed top-0 w-full z-20 flex justify-between items-center h-[70px] px-10 bg-stone-900">
-        <span className="uppercase text-md font-medium text-white ">
+      <header className={headerClass}>
+        <Link className="uppercase text-md font-medium text-white " href="/">
           Photography Portfolio
-        </span>
+        </Link>
 
         <Link
           href="/contact"
-          className="rounded-3xl bg-white text-stone-700 px-3 py-2 hover:bg-opacity-90"
+          className=" rounded-3xl bg-white text-stone-700 sm:px-3 sm:py-2 hover:bg-opacity-90"
         >
           Get in touch
         </Link>

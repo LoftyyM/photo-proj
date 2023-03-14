@@ -15,6 +15,10 @@ module.exports = {
       fontFamily: {
         sans: ["var(--encode-sans)", ...fontFamily.sans],
       },
+
+      colors: {
+        vino: "#83072d",
+      },
     },
   },
   plugins: [],
