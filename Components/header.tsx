@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Head from "next/head";
 import { twMerge } from "tailwind-merge";
-import { FacebookIcon, WasaIcon, InstagramIcon, MailIcon } from "./icons";
+import { FacebookIcon, WasaIcon, InstagramIcon } from "./icons";
 
 export default function Header({ className, ...props }: { className: string }) {
   const headerClass = twMerge(`
@@ -44,9 +44,7 @@ export default function Header({ className, ...props }: { className: string }) {
           <Link href={"https://www.instagram.com/bubuluwu.jpeg/"}>
             <InstagramIcon />
           </Link>
-          <Link href={"mailto:seanuriel@hotmail.com"}>
-            <MailIcon />
-          </Link>
+          
 
           <Link
             href="/contact"

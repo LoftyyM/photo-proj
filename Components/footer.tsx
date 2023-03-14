@@ -1,6 +1,6 @@
 import { twMerge } from "tailwind-merge";
 import Link from "next/link";
-import { FacebookIcon, InstagramIcon, MailIcon, WasaIcon } from "./icons";
+import { FacebookIcon, InstagramIcon, WasaIcon } from "./icons";
 
 export default function Footer({ className, ...props }: { className: string }) {
   const footerClass = twMerge(`
@@ -36,9 +36,6 @@ export default function Footer({ className, ...props }: { className: string }) {
           </Link>
           <Link href={"https://www.instagram.com/bubuluwu.jpeg/"}>
             <InstagramIcon />
-          </Link>
-          <Link href={"mailto:seanuriel@hotmail.com"}>
-            <MailIcon />
           </Link>
         </div>
       </footer>
