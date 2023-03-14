@@ -1,6 +1,6 @@
 import { twMerge } from "tailwind-merge"
 
-export default function Footer({ className, ...props }) {
+export default function Footer({ className, ...props }:{className: string}) {
   const footerClass = twMerge(`
   h-[90px]
   w-full

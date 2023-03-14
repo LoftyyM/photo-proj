@@ -223,7 +223,7 @@ export default function Gallery({ images }: { images: Image[] }) {
             </Tab.Group>
           </div>
         </main>
-        <Footer className={undefined} />
+        <Footer className={""} />
       </div>
     </>
   );

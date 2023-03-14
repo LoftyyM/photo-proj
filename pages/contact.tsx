@@ -38,11 +38,11 @@ function ContactForm() {
   };
 
   return (
-    <div className="bg-fixed bg-manzana-Image bg-center bg-cover overflow-auto  ">
+    <div className=" bg-fixed bg-manzana-Image bg-center bg-cover overflow-auto  ">
       <Header className={""} />
       <div className="flex items-center justify-center h-screen">
         <form
-          className=" m-auto w-full max-w-lg sm:pt-4 "
+          className="m-auto w-full max-w-lg sm:pt-4 "
           onSubmit={handleSubmit}
         >
           <div className="flex flex-wrap mx-3 mb-6">

@@ -1,9 +1,9 @@
 import Link from "next/link";
 import Head from "next/head";
-import { twMerge } from "tailwind-merge"
+import { twMerge } from "tailwind-merge";
 
-export default function Header({ className, ...props }) {
-  
+
+export default function Header({ className, ...props }:{className: string}) {
   const headerClass = twMerge(`
   
   w-full
@@ -18,9 +18,6 @@ export default function Header({ className, ...props }) {
   ${className ?? ""}
   `);
 
-
-  
-  
   return (
     <>
       <Head>
