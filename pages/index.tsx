@@ -39,6 +39,7 @@ const tabs = [
     key: "TAB4",
     display: "TAB4",
   },
+  
 ];
 
 export async function getStaticProps() {
@@ -57,7 +58,7 @@ export async function getStaticProps() {
 export default function Gallery({ images }: { images: Image[] }) {
   const lightboxRef = useRef<LightGallery | null>(null);
   const [isLoading, setLoading] = useState(true);
-  //const id = image.id;
+
   return (
     <>
       <div className=" h-full bg-fixed bg-manzana-Image bg-center bg-cover overflow-auto ">
@@ -84,6 +85,46 @@ export default function Gallery({ images }: { images: Image[] }) {
 
               <Tab.Panels className="h-full bg-stone-900 bg-opacity-80 h-full max-w-[900px] w-full p-2 sm:p-4 my-6">
                 <Tab.Panel className="PANEL1">
+                  <Masonry
+                    breakpointCols={2}
+                    className="flex gap-4"
+                    columnClassName=""
+                  >
+                    {images.map((image) => (
+                      <Image
+                        alt=""
+                        src={image.imageSrc}
+                        width={500}
+                        height={500}
+                        className={cn(
+                          "my-4 hover:opacity-75 duration-700 ease-in-out cursor-pointer",
+                          isLoading
+                            ? "grayscale blur-2xl scale-110"
+                            : "grayscale-0 blur-0 scale-100"
+                        )}
+                        onLoadingComplete={() => setLoading(false)}
+                        onClick={() => {
+                          lightboxRef.current?.openGallery(image.id - 1);
+                        }}
+                      />
+                    ))}
+                  </Masonry>
+                  <LightGalleryComponent
+                    onInit={(ref) => {
+                      if (ref) {
+                        lightboxRef.current = ref.instance;
+                      }
+                    }}
+                    speed={500}
+                    plugins={[lgThumbnail, lgZoom]}
+                    dynamic
+                    dynamicEl={images.map((image) => ({
+                      src: image.imageSrc,
+                      thumb: image.imageSrc,
+                    }))}
+                  ></LightGalleryComponent>
+                </Tab.Panel>
+                <Tab.Panel className="PANEL2">
                   <Masonry
                     breakpointCols={2}
                     className="flex gap-4"
