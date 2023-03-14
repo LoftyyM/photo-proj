@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { DynamicHeader, DynamicFooter } from "./dynamicSource";
+import { DynamicHeader, DynamicFooter } from "../Components/dynamicSource";
 import { useState, useRef } from "react";
 import { createClient } from "@supabase/supabase-js";
 import Image from "next/image";
