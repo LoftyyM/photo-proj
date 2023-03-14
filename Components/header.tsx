@@ -2,8 +2,7 @@ import Link from "next/link";
 import Head from "next/head";
 import { twMerge } from "tailwind-merge";
 
-
-export default function Header({ className, ...props }:{className: string}) {
+export default function Header({ className, ...props }: { className: string }) {
   const headerClass = twMerge(`
   
   w-full
@@ -12,8 +11,9 @@ export default function Header({ className, ...props }:{className: string}) {
   items-center
   sm:20
   md:h-20
-  px-10
+  px-5
   bg-stone-900
+  
   
   ${className ?? ""}
   `);

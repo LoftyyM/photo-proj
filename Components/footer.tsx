@@ -20,7 +20,7 @@ export default function Footer({ className, ...props }:{className: string}) {
   return (
     <>
       <footer className={footerClass}>
-        <p> FOOTER PLACEHOLDER </p>
+        <p> Copyright © 2023 Mamarre Inc. </p>
       </footer>
     </>
   );
