@@ -5,7 +5,7 @@
 @layer components {
   html,
   body {
-    
+    height:auto;
     color: white;
     scroll-behavior: smooth;
   }
