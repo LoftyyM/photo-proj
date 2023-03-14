@@ -10,6 +10,7 @@ export default function Header({ className, ...props }: { className: string }) {
   w-full
   px-5
   bg-stone-900
+  overflow-auto
   
   
   ${className ?? ""}
@@ -32,7 +33,7 @@ export default function Header({ className, ...props }: { className: string }) {
 
 
 
-        <div className="flex flex-row items-center gap-4 ">
+        <div className="flex flex-row items-center gap-4 pr-2">
           
           <Link href={"https://www.facebook.com/smithloftyy/"}>
             <FacebookIcon />
@@ -49,7 +50,7 @@ export default function Header({ className, ...props }: { className: string }) {
 
           <Link
             href="/contact"
-            className=" rounded-3xl bg-white text-stone-700 sm:px-3 sm:py-2 hover:bg-opacity-90 hover:bg-gray-600  hover:text-white"
+            className=" rounded-3xl bg-white text-stone-700 sm:px-3 sm:py-2  hover:bg-opacity-90 hover:bg-gray-600  hover:text-white "
           >
             Contact
           </Link>
