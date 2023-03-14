@@ -25,16 +25,11 @@ export default function Header({ className, ...props }: { className: string }) {
           </Link>
         </div>
 
-
         <div>
           <Link href={"#"}>About </Link>
-          
-          </div>
+        </div>
 
-
-
-        <div className="flex flex-row items-center sm:gap-2 lg:gap-4 pr-2">
-          
+        <div className="flex flex-row items-center sm:gap-3 lg:gap-4 pr-2">
           <Link href={"https://www.facebook.com/smithloftyy/"}>
             <FacebookIcon />
           </Link>
@@ -44,7 +39,6 @@ export default function Header({ className, ...props }: { className: string }) {
           <Link href={"https://www.instagram.com/bubuluwu.jpeg/"}>
             <InstagramIcon />
           </Link>
-          
 
           <Link
             href="/contact"
