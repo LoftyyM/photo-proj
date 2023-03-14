@@ -108,7 +108,7 @@ export default function Gallery({
       </Head>
 
       <div className=" h-full bg-fixed bg-manzana-Image bg-center bg-cover overflow-auto priority  ">
-        <DynamicHeader className={"fixed top-0"} />
+        <DynamicHeader className={"fixed top-0 "} />
         <div className="h-screen flex place-content-center items-center text-6xl ">
           <div className="fixed z-0">
             <h1 className="font-bold">PORTFOLIO</h1>
@@ -126,7 +126,7 @@ export default function Gallery({
           />
         </div>
 
-        <main className="fb-comments">
+        <main className="fb-comments ">
           <div
             ref={ref}
             className=" relative  flex flex-col items-center h-full bg-stone-900"

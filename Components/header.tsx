@@ -17,7 +17,7 @@ export default function Header({ className, ...props }: { className: string }) {
   md:h-20
   px-5
   bg-stone-900
-  relative
+  
   
   ${className ?? ""}
   `);
@@ -31,7 +31,16 @@ export default function Header({ className, ...props }: { className: string }) {
           </Link>
         </div>
 
+
+        <div>
+          <Link href={"#"}>About </Link>
+          
+          </div>
+
+
+
         <div className="flex flex-row items-center gap-4 ">
+          
           <Link href={"https://www.facebook.com/smithloftyy/"}>
             <FacebookIcon />
           </Link>
