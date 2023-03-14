@@ -39,7 +39,7 @@ function ContactForm() {
 
   return (
     <div className="flex flex-col h-screen bg-fixed bg-manzana-Image bg-center bg-cover overflow-auto  ">
-      <Header className={"flex justify-between items-center  fixed top-0 lg:h-20 xl:h-30 sm:h-16 md:h-20 px-5"} />
+      <Header className={"flex justify-between items-center  relative top-0 lg:h-20 xl:h-30 sm:h-16 md:h-20 px-5"} />
       <div className="flex items-center justify-center grow">
         <form
           className="relative m-auto w-full max-w-lg sm:pt-4 sm:pb-4 from-gray-900 to-black bg-gradient-to-b opacity-75 rounded-2xl "
