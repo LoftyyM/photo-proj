@@ -49,7 +49,7 @@ export default function Header({ className, ...props }: { className: string }) {
   w-full
   px-5
   bg-stone-900
-  overflow-auto
+  overflow-hidden
   
   ${className ?? ""}
   `);
