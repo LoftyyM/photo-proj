@@ -5,13 +5,12 @@
 @layer components {
   html,
   body {
-    height:auto;
+    height: auto;
     color: white;
     scroll-behavior: smooth;
   }
 
   #__next {
-    
   }
 }
 
@@ -21,23 +20,23 @@
 }
 
 /* ===== Scrollbar CSS ===== */
-  /* Firefox */
-  * {
-    scrollbar-width: auto;
-    scrollbar-color: #83868c #d9d9d9;
-  }
+/* Firefox */
+* {
+  scrollbar-width: auto;
+  scrollbar-color: #83868c #d9d9d9;
+}
 
-  /* Chrome, Edge, and Safari */
-  *::-webkit-scrollbar {
-    width: 15px;
-  }
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 15px;
+}
 
-  *::-webkit-scrollbar-track {
-    background: #d9d9d9;
-  }
+*::-webkit-scrollbar-track {
+  background: #d9d9d9;
+}
 
-  *::-webkit-scrollbar-thumb {
-    background-color: #83868c;
-    border-radius: 0px;
-    border: 0px none #ffffff;
-  }
+*::-webkit-scrollbar-thumb {
+  background-color: #83868c;
+  border-radius: 0px;
+  border: 0px none #ffffff;
+}

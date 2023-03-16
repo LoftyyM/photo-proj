@@ -10,7 +10,7 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        "manzana-Image": "url('../public/bgIMG.jpg')",
+        "manzana-Image": "url('https://loftyyportfolio.imgix.net/Background/bgIMG.jpg?auto=compress,format&cs=tinysrgb&fit=crop')",
       },
       fontFamily: {
         sans: ["var(--encode-sans)", ...fontFamily.sans],

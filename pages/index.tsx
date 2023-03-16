@@ -7,6 +7,8 @@ import { Tab } from "@headlessui/react";
 import Masonry from "react-masonry-css";
 import classNames from "classnames";
 
+import { motion } from "framer-motion";
+
 import { LightGallery } from "lightgallery/lightgallery";
 import LightGalleryComponent from "lightgallery/react";
 
@@ -18,6 +20,12 @@ import "lightgallery/css/lg-thumbnail.css";
 // import plugins
 import lgThumbnail from "lightgallery/plugins/thumbnail";
 import lgZoom from "lightgallery/plugins/zoom";
+
+const breakpointColumnsObj = {
+  default: 3,
+  700: 2,
+  500: 1
+};
 
 const tabs = [
   {
@@ -40,6 +48,18 @@ const tabs = [
     key: "TAB5",
     display: "Producto",
   },
+  {
+    key: "TAB6",
+    display: "Nature & Landscapes",
+  },
+  {
+    key: "TAB7",
+    display: "Portrait",
+  },
+  {
+    key: "TAB8",
+    display: "Monica",
+  },
 ];
 
 export async function getStaticProps() {
@@ -52,22 +72,33 @@ export async function getStaticProps() {
     .select("*")
     .order("id");
   const { data: rebecaImages } = await supabaseAdmin
-    .from("images")
-    .select()
-    .eq("proyecto", "Rebeca");
+    .from("Rebeca")
+    .select("*")
+    .order("id");
   const { data: franciscoImages } = await supabaseAdmin
-    .from("images")
-    .select()
-    .eq("proyecto", "Francisco")
+    .from("Francisco")
+    .select("*")
     .order("id");
   const { data: abigailImages } = await supabaseAdmin
-    .from("images")
-    .select()
-    .eq("proyecto", "Abigail");
+    .from("Abigail")
+    .select("*")
+    .order("id");
   const { data: productoImages } = await supabaseAdmin
-    .from("images")
-    .select()
-    .eq("proyecto", "Producto");
+    .from("Producto")
+    .select("*")
+    .order("id");
+  const { data: nlImages } = await supabaseAdmin
+    .from("Nature&Landscapes")
+    .select("*")
+    .order("id");
+  const { data: portraitImages } = await supabaseAdmin
+    .from("Portrait")
+    .select("*")
+    .order("id");
+  const { data: monicaImages } = await supabaseAdmin
+    .from("Monica")
+    .select("*")
+    .order("id");
   return {
     props: {
       allImages,
@@ -75,6 +106,9 @@ export async function getStaticProps() {
       franciscoImages,
       abigailImages,
       productoImages,
+      nlImages,
+      portraitImages,
+      monicaImages,
     },
   };
 }
@@ -85,12 +119,18 @@ export default function Gallery({
   franciscoImages,
   abigailImages,
   productoImages,
+  nlImages,
+  portraitImages,
+  monicaImages,
 }: {
   allImages: Image[];
   rebecaImages: Image[];
   franciscoImages: Image[];
   abigailImages: Image[];
   productoImages: Image[];
+  nlImages: Image[];
+  portraitImages: Image[];
+  monicaImages: Image[];
 }) {
   const lightboxRef = useRef<LightGallery | null>(null);
   const [isLoading, setLoading] = useState(true);
@@ -98,7 +138,7 @@ export default function Gallery({
   const scrollClick = () => {
     ref.current?.scrollIntoView({ behavior: "smooth" });
   };
-
+;
   return (
     <>
       <Head>
@@ -109,13 +149,43 @@ export default function Gallery({
       </Head>
 
       <div className=" h-screen bg-scroll bg-manzana-Image  bg-cover overflow-auto priority  ">
-        <DynamicHeader className={"flex justify-between items-center  fixed top-0 lg:h-20 xl:h-30 sm:h-16 md:h-20 px-5 "} />
+        <DynamicHeader
+          className={
+            "flex justify-between items-center  fixed top-0 lg:h-20 xl:h-30 sm:h-16 md:h-20 px-5 "
+          }
+        />
         <div className="h-screen flex place-content-center items-center text-6xl ">
           <div className="fixed z-0">
-            <h1 className="font-bold">PORTFOLIO</h1>
-            <p className="text-3xl font-semibold italic text-gray-900 ">
+            <motion.h1
+              animate={{ color:'#fff', opacity: 1, scale: 1 }}
+              transition={{
+                default: {
+                  repeat: Infinity,
+                  repeatType: "reverse",
+                  duration: 3,
+                },
+                scale: {
+                  type: "spring",
+                  damping: 5,
+                  stiffness: 100,
+                  restDelta: 0.001,
+                },
+              }}
+              className="font-bold bg-gradient-to-r from-gray-700 via-gray-900 to-black inline-block text-transparent bg-clip-text"
+            >
+              - PORTFOLIO -
+            </motion.h1>
+            <motion.p
+              
+              transition={{
+                duration: 0.8,
+                delay: 1,
+                ease: [0, 0.71, 0.2, 1.01],
+              }}
+              className="text-3xl font-semibold italic text-gray-900 "
+            >
               By Sean Smith
-            </p>
+            </motion.p>
           </div>
           <Image
             alt=""
@@ -127,7 +197,7 @@ export default function Gallery({
           />
         </div>
 
-        <main className="fb-comments ">
+        <main>
           <div
             ref={ref}
             className=" relative  flex flex-col items-center h-full bg-stone-900"
@@ -153,11 +223,51 @@ export default function Gallery({
               <Tab.Panels className="h-full bg-stone-900 bg-opacity-80 max-w-screen-lg   ">
                 <Tab.Panel className="PANEL1">
                   <Masonry
-                    breakpointCols={3}
+                    breakpointCols={breakpointColumnsObj}
                     className="flex gap-4"
                     columnClassName=""
                   >
-                    {allImages.map((image) => (
+                    {           allImages.map((image) => (
+                        <Image
+                          alt=""
+                          src={image.imageSrc}
+                          width={500}
+                          height={500}
+                          className={cn(
+                            "my-4 hover:opacity-75 duration-700 ease-in-out cursor-pointer",
+                            isLoading
+                              ? "grayscale blur-2xl scale-110"
+                              : "grayscale-0 blur-0 scale-100"
+                          )}
+                          onLoadingComplete={() => setLoading(false)}
+                          onClick={() => {
+                            lightboxRef.current?.openGallery(image.id - 1);
+                          }}
+                        />
+                      ))}
+                  </Masonry>
+                  <LightGalleryComponent
+                    onInit={(ref) => {
+                      if (ref) {
+                        lightboxRef.current = ref.instance;
+                      }
+                    }}
+                    speed={500}
+                    plugins={[lgThumbnail, lgZoom]}
+                    dynamic
+                    dynamicEl={allImages.map((image) => ({
+                      src: image.imageSrc,
+                      thumb: image.thumbSrc,
+                    }))}
+                  ></LightGalleryComponent>
+                </Tab.Panel>
+                <Tab.Panel className="PANEL2">
+                  <Masonry
+                    breakpointCols={breakpointColumnsObj}
+                    className="flex gap-4"
+                    columnClassName=""
+                  >
+                    {rebecaImages.map((image) => (
                       <Image
                         alt=""
                         src={image.imageSrc}
@@ -185,46 +295,6 @@ export default function Gallery({
                     speed={500}
                     plugins={[lgThumbnail, lgZoom]}
                     dynamic
-                    dynamicEl={allImages.map((image) => ({
-                      src: image.imageSrc,
-                      thumb: image.thumbSrc,
-                    }))}
-                  ></LightGalleryComponent>
-                </Tab.Panel>
-                <Tab.Panel className="PANEL2">
-                  <Masonry
-                    breakpointCols={3}
-                    className="flex gap-4"
-                    columnClassName=""
-                  >
-                    {rebecaImages.map((image) => (
-                      <Image
-                        alt=""
-                        src={image.imageSrc}
-                        width={500}
-                        height={500}
-                        className={cn(
-                          "my-4 hover:opacity-75 duration-700 ease-in-out cursor-pointer",
-                          isLoading
-                            ? "grayscale blur-2xl scale-110"
-                            : "grayscale-0 blur-0 scale-100"
-                        )}
-                        onLoadingComplete={() => setLoading(false)}
-                        onClick={() => {
-                          lightboxRef.current?.openGallery(image?.id - 1);
-                        }}
-                      />
-                    ))}
-                  </Masonry>
-                  <LightGalleryComponent
-                    onInit={(ref) => {
-                      if (ref) {
-                        lightboxRef.current = ref.instance;
-                      }
-                    }}
-                    speed={500}
-                    plugins={[lgThumbnail, lgZoom]}
-                    dynamic
                     dynamicEl={rebecaImages.map((image) => ({
                       src: image.imageSrc,
                       thumb: image.thumbSrc,
@@ -233,7 +303,7 @@ export default function Gallery({
                 </Tab.Panel>
                 <Tab.Panel className="PANEL3">
                   <Masonry
-                    breakpointCols={3}
+                    breakpointCols={breakpointColumnsObj}
                     className="flex gap-4"
                     columnClassName=""
                   >
@@ -251,7 +321,7 @@ export default function Gallery({
                         )}
                         onLoadingComplete={() => setLoading(false)}
                         onClick={() => {
-                          lightboxRef.current?.openGallery(image?.id - 9);
+                          lightboxRef.current?.openGallery(image.id - 1);
                         }}
                       />
                     ))}
@@ -273,7 +343,7 @@ export default function Gallery({
                 </Tab.Panel>
                 <Tab.Panel className="PANEL4">
                   <Masonry
-                    breakpointCols={3}
+                    breakpointCols={breakpointColumnsObj}
                     className="flex gap-4"
                     columnClassName=""
                   >
@@ -291,7 +361,7 @@ export default function Gallery({
                         )}
                         onLoadingComplete={() => setLoading(false)}
                         onClick={() => {
-                          lightboxRef.current?.openGallery(image?.id - 1);
+                          lightboxRef.current?.openGallery(image.id - 1);
                         }}
                       />
                     ))}
@@ -313,7 +383,7 @@ export default function Gallery({
                 </Tab.Panel>
                 <Tab.Panel className="PANEL5">
                   <Masonry
-                    breakpointCols={3}
+                    breakpointCols={breakpointColumnsObj}
                     className="flex gap-4"
                     columnClassName=""
                   >
@@ -331,7 +401,7 @@ export default function Gallery({
                         )}
                         onLoadingComplete={() => setLoading(false)}
                         onClick={() => {
-                          lightboxRef.current?.openGallery(image?.id - 1);
+                          lightboxRef.current?.openGallery(image.id - 1);
                         }}
                       />
                     ))}
@@ -351,11 +421,133 @@ export default function Gallery({
                     }))}
                   ></LightGalleryComponent>
                 </Tab.Panel>
+                <Tab.Panel className="PANEL6">
+                  <Masonry
+                    breakpointCols={breakpointColumnsObj}
+                    className="flex gap-4"
+                    columnClassName=""
+                  >
+                    {nlImages.map((image) => (
+                      <Image
+                        alt=""
+                        src={image.imageSrc}
+                        width={500}
+                        height={500}
+                        className={cn(
+                          "my-4 hover:opacity-75 duration-700 ease-in-out cursor-pointer",
+                          isLoading
+                            ? "grayscale blur-2xl scale-110"
+                            : "grayscale-0 blur-0 scale-100"
+                        )}
+                        onLoadingComplete={() => setLoading(false)}
+                        onClick={() => {
+                          lightboxRef.current?.openGallery(image.id - 1);
+                        }}
+                      />
+                    ))}
+                  </Masonry>
+                  <LightGalleryComponent
+                    onInit={(ref) => {
+                      if (ref) {
+                        lightboxRef.current = ref.instance;
+                      }
+                    }}
+                    speed={500}
+                    plugins={[lgThumbnail, lgZoom]}
+                    dynamic
+                    dynamicEl={nlImages.map((image) => ({
+                      src: image.imageSrc,
+                      thumb: image.thumbSrc,
+                    }))}
+                  ></LightGalleryComponent>
+                </Tab.Panel>
+                <Tab.Panel className="PANEL7">
+                  <Masonry
+                    breakpointCols={breakpointColumnsObj}
+                    className="flex gap-4"
+                    columnClassName=""
+                  >
+                    {portraitImages.map((image) => (
+                      <Image
+                        alt=""
+                        src={image.imageSrc}
+                        width={500}
+                        height={500}
+                        className={cn(
+                          "my-4 hover:opacity-75 duration-700 ease-in-out cursor-pointer",
+                          isLoading
+                            ? "grayscale blur-2xl scale-110"
+                            : "grayscale-0 blur-0 scale-100"
+                        )}
+                        onLoadingComplete={() => setLoading(false)}
+                        onClick={() => {
+                          lightboxRef.current?.openGallery(image.id - 1);
+                        }}
+                      />
+                    ))}
+                  </Masonry>
+                  <LightGalleryComponent
+                    onInit={(ref) => {
+                      if (ref) {
+                        lightboxRef.current = ref.instance;
+                      }
+                    }}
+                    speed={500}
+                    plugins={[lgThumbnail, lgZoom]}
+                    dynamic
+                    dynamicEl={portraitImages.map((image) => ({
+                      src: image.imageSrc,
+                      thumb: image.thumbSrc,
+                    }))}
+                  ></LightGalleryComponent>
+                </Tab.Panel>
+                <Tab.Panel className="PANEL8">
+                  <Masonry
+                    breakpointCols={breakpointColumnsObj}
+                    className="flex gap-4"
+                    columnClassName=""
+                  >
+                    {monicaImages.map((image) => (
+                      <Image
+                        alt=""
+                        src={image.imageSrc}
+                        width={500}
+                        height={500}
+                        className={cn(
+                          "my-4 hover:opacity-75 duration-700 ease-in-out cursor-pointer",
+                          isLoading
+                            ? "grayscale blur-2xl scale-110"
+                            : "grayscale-0 blur-0 scale-100"
+                        )}
+                        onLoadingComplete={() => setLoading(false)}
+                        onClick={() => {
+                          lightboxRef.current?.openGallery(image.id - 1);
+                        }}
+                      />
+                    ))}
+                  </Masonry>
+                  <LightGalleryComponent
+                    onInit={(ref) => {
+                      if (ref) {
+                        lightboxRef.current = ref.instance;
+                      }
+                    }}
+                    speed={500}
+                    plugins={[lgThumbnail, lgZoom]}
+                    dynamic
+                    dynamicEl={monicaImages.map((image) => ({
+                      src: image.imageSrc,
+                      thumb: image.thumbSrc,
+                    }))}
+                  ></LightGalleryComponent>
+                </Tab.Panel>
               </Tab.Panels>
             </Tab.Group>
           </div>
         </main>
-        <DynamicFooter className={"flex lg:h-20 xl:h-30 sm:h-16 md:h-20 px-5 py-5"} />
+        <DynamicFooter
+          className={"flex lg:h-20 xl:h-30 sm:h-16 md:h-20 px-5 py-5"}
+        />
       </div>
     </>
   );
