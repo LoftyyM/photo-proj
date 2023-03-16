@@ -203,7 +203,7 @@ export default function Gallery({
             className=" relative  flex flex-col items-center h-full bg-stone-900"
           >
             <Tab.Group>
-              <Tab.List className="bg-stone-900 pt-5 pb-5 z-30 flex flex-wrap justify-center w-full gap-4 md:gap-12 sticky top-0">
+              <Tab.List onClick={scrollClick} className="bg-stone-900 pt-5 pb-5 z-30 flex flex-wrap justify-center w-full gap-4 md:gap-12 sticky top-0">
                 {tabs.map((tab) => (
                   <Tab key={tab.key} className=" p-2">
                     {({ selected }) => (
@@ -214,7 +214,7 @@ export default function Gallery({
                         )}
                       >
                         {tab.display}
-                        onClick={scrollClick}
+                        
                       </span>
                     )}
                   </Tab>
