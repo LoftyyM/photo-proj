@@ -8,10 +8,10 @@ export default function BlogPost({
   slug,
 }) {
   return (
-    <div className="grid gap-4 grid-rows-2 grid-cols-2 text-red-500">
+    <div className=" text-red-500">
       <Link href={"/posts/" + slug}>
-        <div className="">
-          <img src={coverPhoto.url} alt="" />
+        <div >
+          <img className="h-32" src={coverPhoto.url} alt="" />
         </div>
       </Link>
 
@@ -22,7 +22,7 @@ export default function BlogPost({
 
         <div className="">
           <div>
-            <img src={author.avatar.url} className="h-28" />
+            <img src={author.avatar.url} className="h-16" />
             <h3>{author.name}</h3>
           </div>
           <div className="">

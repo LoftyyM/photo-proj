@@ -66,17 +66,19 @@ export default function blogPost({ post }) {
             "flex justify-between items-center  relative top-0 lg:h-20 xl:h-30 sm:h-16 md:h-20 px-5"
           }
         />
-        <main className="flex justify-center items-center h-full text-red-500">
-          <img src={post.coverPhoto.url} alt="" />
-          <div>
-            <img src={post.author.avatar.url} alt="" />
+        <main className=" h-full text-red-500">
+          <div className="px-4">
+            <img className="h-32" src={post.coverPhoto.url} alt="" />
             <div>
-              <h6>By {post.author.name}</h6>
-              <h6>{post.datePublished}</h6>
+              <img className="h-16" src={post.author.avatar.url} alt="" />
+              <div>
+                <h6>By {post.author.name}</h6>
+                <h6>{post.datePublished}</h6>
+              </div>
             </div>
+            <h2>{post.title}</h2>
+            <div dangerouslySetInnerHTML={{ __html: post.content.html }}></div>
           </div>
-          <h2>{post.title}</h2>
-          <div dangerouslySetInnerHTML={{ __html: post.content.html }}></div>
         </main>
         <DynamicFooter
           className={"flex lg:h-20 xl:h-30 sm:h-16 md:h-20 px-5 py-5"}
