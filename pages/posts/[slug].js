@@ -41,7 +41,7 @@ export async function getStaticPaths() {
   const { posts } = await graphcms.request(SLUGLIST);
   return {
     paths: posts.map((post) => ({ params: { slug: post.slug } })),
-    fallback: true,
+    fallback: false,
   };
 }
 
@@ -68,7 +68,7 @@ export default function blogPost({ post }) {
         />
         <main className=" h-full text-red-500">
           <div className="px-4">
-            -
+            <img className="h-32" src={post.coverPhoto.url} alt="" />
             <div>
               <img className="h-16" src={post.author.avatar.url} alt="" />
               <div>

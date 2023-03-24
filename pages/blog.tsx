@@ -5,9 +5,10 @@ import BlogCard from "../Components/blogCard";
 import { Key } from "react";
 
 const graphcms = new GraphQLClient(
-  "https://api-us-west-2.hygraph.com/v2/clfko7lhe0uht01ur0asy57zn/master"
-);
-
+  process.env.GRAPHCMS_URL || ""
+  );
+  
+  
 const query = gql`
   {
     posts {
