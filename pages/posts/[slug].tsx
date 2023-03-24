@@ -38,16 +38,16 @@ const SLUGLIST = gql`
 `;
 
 export async function getStaticPaths() {
-  const { posts }:{posts:any} = await graphcms.request(SLUGLIST);
+  const { posts } = await graphcms.request(SLUGLIST);
   return {
-    paths: posts.map((post: { slug: any; }) => ({ params: { slug: post.slug } })),
+    paths: posts.map((post) => ({ params: { slug: post.slug } })),
     fallback: false,
   };
 }
 
-export async function getStaticProps({ params }:{params:any}) {
+export async function getStaticProps({ params }) {
   const slug = params.slug;
-  const {data}:{data:any} = await graphcms.request(query, { slug });
+  const data = await graphcms.request(query, { slug });
   const post = data.post;
   return {
     props: {
@@ -57,7 +57,7 @@ export async function getStaticProps({ params }:{params:any}) {
   };
 }
 
-export default function blogPost({ post }:{post:any}) {
+export default function blogPost({ post }) {
   return (
     <>
       <div className="flex flex-col h-screen bg-fixed bg-manzana-Image bg-center bg-cover overflow-auto  ">

@@ -34,7 +34,7 @@ const query = gql`
 
 export async function getStaticProps() {
 
-  const { posts }:{posts:any} = await graphcms.request(query);
+  const { posts }:{posts:Posteos[]} = await graphcms.request(query);
   return {
     props: {
       posts,
@@ -43,7 +43,7 @@ export async function getStaticProps() {
   };
 }
 
-export default function blog({posts}:{posts:any}) {
+export default function blog({posts}:{posts:Posteos[]}) {
   
   return (
     <>
@@ -61,7 +61,7 @@ export default function blog({posts}:{posts:any}) {
           }
         />
         <main className="grid grid-cols-2 grid-rows-2 h-full ">
-          {posts.map((post: { title: any; author: any; coverPhoto: any; id: Key | null | undefined; datePublished: any; slug: any; }) => (
+          {posts.map((post ) => (
             
             <BlogCard
               title={post.title}
@@ -81,3 +81,13 @@ export default function blog({posts}:{posts:any}) {
   );
 }
 
+
+type Posteos = {
+id: Key | null | undefined;
+title: any;
+author: string;
+coverPhoto: string; 
+key: any
+datePublished: any
+slug: any
+};

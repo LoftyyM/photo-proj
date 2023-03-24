@@ -6,13 +6,13 @@ export default function BlogPost({
   coverPhoto,
   datePublished,
   slug,
-}: {
+}:{
   title: any;
   author: any;
   coverPhoto: any;
   datePublished: any;
   slug: any;
-}): JSX.Element {
+}){
   return (
     <div className=" text-red-500">
       <Link href={"/posts/" + slug}>
@@ -39,3 +39,12 @@ export default function BlogPost({
     </div>
   );
 }
+
+type Posteos = {
+title: string;
+author: string;
+coverPhoto: string; 
+key: any
+datePublished: any
+slug: any
+};
