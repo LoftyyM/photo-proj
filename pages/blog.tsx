@@ -2,6 +2,7 @@ import { DynamicHeader, DynamicFooter } from "../Components/dynamicSource";
 import Head from "next/head";
 import { GraphQLClient, gql } from "graphql-request";
 import BlogCard from "../Components/blogCard";
+import { Key } from "react";
 
 const graphcms = new GraphQLClient(
   "https://api-us-west-2.hygraph.com/v2/clfko7lhe0uht01ur0asy57zn/master"
@@ -32,7 +33,8 @@ const query = gql`
 `;
 
 export async function getStaticProps() {
-  const { posts } = await graphcms.request(query);
+
+  const { posts }:{posts:any} = await graphcms.request(query);
   return {
     props: {
       posts,
@@ -41,7 +43,7 @@ export async function getStaticProps() {
   };
 }
 
-export default function blog({posts}) {
+export default function blog({posts}:{posts:any}) {
   
   return (
     <>
@@ -59,7 +61,7 @@ export default function blog({posts}) {
           }
         />
         <main className="grid grid-cols-2 grid-rows-2 h-full ">
-          {posts.map((post) => (
+          {posts.map((post: { title: any; author: any; coverPhoto: any; id: Key | null | undefined; datePublished: any; slug: any; }) => (
             
             <BlogCard
               title={post.title}

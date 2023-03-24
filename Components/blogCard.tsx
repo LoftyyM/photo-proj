@@ -6,11 +6,17 @@ export default function BlogPost({
   coverPhoto,
   datePublished,
   slug,
-}) {
+}: {
+  title: any;
+  author: any;
+  coverPhoto: any;
+  datePublished: any;
+  slug: any;
+}): JSX.Element {
   return (
     <div className=" text-red-500">
       <Link href={"/posts/" + slug}>
-        <div >
+        <div>
           <img className="h-32" src={coverPhoto.url} alt="" />
         </div>
       </Link>
