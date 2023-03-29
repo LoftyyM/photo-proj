@@ -15,6 +15,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/blog.tsx", "pages/posts/[slug].js", "Components/blogCard.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/blog.tsx", "pages/posts/[slug].tsx", "Components/blogCard.tsx"],
   "exclude": ["node_modules"]
 }
