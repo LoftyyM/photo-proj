@@ -73,13 +73,13 @@ export default function Header({ className, ...props }: { className: string }) {
           className="flex flex-row items-center sm:gap-3 lg:gap-4 pr-2 "
         >
           <motion.div variants={divContainerItem}>
-            <Link href="/blog" className="hover:opacity-70">
+            <Link href="/blog" className="hover:opacity-70 sm:px-3 sm:py-2   text-white">
               Blog
             </Link>
           </motion.div>
 
           <motion.div variants={divContainerItem}>
-            <Link href="/about" className="hover:opacity-70">
+            <Link href="/about" className="hover:opacity-70 sm:px-3 sm:py-2   text-white">
               About
             </Link>
           </motion.div>
