@@ -51,13 +51,13 @@ export default function blog({ posts }: { posts: Posteos[] }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="flex flex-col  bg-fixed bg-manzana-Image bg-center bg-cover overflow-auto  ">
+      <div className="flex flex-col  bg-fixed bg-manzana-Image bg-center bg-cover overflow-auto  h-screen">
         <DynamicHeader
           className={
             "flex justify-between items-center  relative top-0 lg:h-20 xl:h-30 sm:h-16 md:h-20 px-5"
           }
         />
-        <main className=" py-4 px-6 grid grid-cols-2 grid-rows-auto">
+        <main className=" py-4 px-6 grid grid-cols-2 grid-rows-auto grow">
           {posts.map((post) => (
             <BlogCard
               title={post.title}

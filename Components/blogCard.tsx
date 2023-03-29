@@ -13,10 +13,10 @@ export default function BlogPost({
   coverPhoto: any;
   datePublished: any;
   slug: any;
-  description: any;
+  description: string;
 }) {
   return (
-    <div className=" mb-4  bg-stone-800 max-w-sm rounded-lg overflow-hidden shadow-lg">
+    <div className=" mb-6  bg-stone-800 max-w-sm rounded-lg overflow-hidden shadow-lg">
       <Link href={"/posts/" + slug}>
         <div>
           <img className="w-full" src={coverPhoto.url} alt="" />
@@ -32,7 +32,7 @@ export default function BlogPost({
           <div className="text-red-300 pb-6"> {description}</div>
 
           <div>
-            <img src={author.avatar.url} className="h-16" />
+            <img src={author.avatar.url} className="h-16 rounded-full" />
             <h3>{author.name}</h3>
           </div>
           <div className="">

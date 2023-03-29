@@ -147,7 +147,7 @@ export default function Gallery({
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className=" h-screen bg-scroll bg-manzana-Image  bg-cover overflow-auto priority  ">
+      <div className=" h-screen bg-scroll   bg-cover bg-manzana-Image overflow-auto priority  ">
         <DynamicHeader
           className={
             "flex justify-between items-center  fixed top-0 lg:h-20 xl:h-30 sm:h-16 md:h-20 px-5 "

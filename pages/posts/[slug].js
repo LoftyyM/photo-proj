@@ -60,17 +60,17 @@ export async function getStaticProps({ params }) {
 export default function blogPost({ post }) {
   return (
     <>
-      <div className="flex flex-col  bg-fixed bg-manzana-Image bg-center bg-cover overflow-auto  ">
+      <div className="flex flex-col overflow-auto  h-screen">
         <DynamicHeader
           className={
             "flex justify-between items-center  relative top-0 lg:h-20 xl:h-30 sm:h-16 md:h-20 px-5"
           }
         />
-        <main className=" h-screen px-6 py-6 text-zinc-400 bg-zinc-800">
+        <main className=" sm:h-full px-6 py-6 text-zinc-400 bg-zinc-800">
           <div className="px-4">
-            <img className="mx-auto h-auto pb-4 w-1/4" src={post.coverPhoto.url} alt="" />
+            <img className="mx-auto h-auto pb-4 w-1/3" src={post.coverPhoto.url} alt="" />
             <div>
-              <img className="w-8" src={post.author.avatar.url} alt="" />
+              <img className="w-10 rounded-full" src={post.author.avatar.url} alt="" />
               <div>
                 <h6>By {post.author.name}</h6>
                 <h6>{post.datePublished}</h6>
