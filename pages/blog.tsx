@@ -22,6 +22,7 @@ const query = gql`
       content {
         html
       }
+      description
       coverPhoto {
         id
         url
@@ -50,13 +51,13 @@ export default function blog({ posts }: { posts: Posteos[] }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="flex flex-col h-screen bg-fixed bg-manzana-Image bg-center bg-cover overflow-auto  ">
+      <div className="flex flex-col  bg-fixed bg-manzana-Image bg-center bg-cover overflow-auto  ">
         <DynamicHeader
           className={
             "flex justify-between items-center  relative top-0 lg:h-20 xl:h-30 sm:h-16 md:h-20 px-5"
           }
         />
-        <main className="grid grid-cols-2 grid-rows-2 h-full ">
+        <main className=" py-4 px-6 grid grid-cols-2 grid-rows-auto">
           {posts.map((post) => (
             <BlogCard
               title={post.title}
@@ -65,9 +66,11 @@ export default function blog({ posts }: { posts: Posteos[] }) {
               key={post.id}
               datePublished={post.datePublished}
               slug={post.slug}
+              description={post.description}
             />
           ))}
         </main>
+
         <DynamicFooter
           className={"flex lg:h-20 xl:h-30 sm:h-16 md:h-20 px-5 py-5"}
         />
@@ -84,4 +87,6 @@ type Posteos = {
   key: any;
   datePublished: any;
   slug: any;
+  content:any;
+  description:any;
 };

@@ -24,7 +24,7 @@ import lgZoom from "lightgallery/plugins/zoom";
 const breakpointColumnsObj = {
   default: 3,
   700: 2,
-  500: 1
+  500: 1,
 };
 
 const tabs = [
@@ -138,7 +138,6 @@ export default function Gallery({
   const scrollClick = () => {
     ref.current?.scrollIntoView({ behavior: "smooth" });
   };
-;
   return (
     <>
       <Head>
@@ -157,7 +156,7 @@ export default function Gallery({
         <div className="h-screen flex place-content-center items-center text-6xl ">
           <div className="fixed z-0">
             <motion.h1
-              animate={{ color:'#fff', opacity: 1, scale: 1 }}
+              animate={{ color: "#fff", opacity: 1, scale: 1 }}
               transition={{
                 default: {
                   repeat: Infinity,
@@ -173,10 +172,9 @@ export default function Gallery({
               }}
               className="font-bold bg-gradient-to-r from-gray-700 via-gray-900 to-black inline-block text-transparent bg-clip-text"
             >
-              - PORTFOLIO -
+              PORTFOLIO
             </motion.h1>
             <motion.p
-              
               transition={{
                 duration: 0.8,
                 delay: 1,
@@ -203,7 +201,10 @@ export default function Gallery({
             className=" relative  flex flex-col items-center h-full bg-stone-900"
           >
             <Tab.Group>
-              <Tab.List onClick={scrollClick} className="bg-stone-900 pt-5 pb-5 z-30 flex flex-wrap justify-center w-full gap-4 md:gap-12 sticky top-0">
+              <Tab.List
+                onClick={scrollClick}
+                className="bg-stone-900 pt-5 pb-5 z-30 flex flex-wrap justify-center w-full gap-4 md:gap-12 sticky top-0"
+              >
                 {tabs.map((tab) => (
                   <Tab key={tab.key} className=" p-2">
                     {({ selected }) => (
@@ -214,7 +215,6 @@ export default function Gallery({
                         )}
                       >
                         {tab.display}
-                        
                       </span>
                     )}
                   </Tab>
@@ -228,24 +228,24 @@ export default function Gallery({
                     className="flex gap-4"
                     columnClassName=""
                   >
-                    {           allImages.map((image) => (
-                        <Image
-                          alt=""
-                          src={image.imageSrc}
-                          width={500}
-                          height={500}
-                          className={cn(
-                            "my-4 hover:opacity-75 duration-700 ease-in-out cursor-pointer",
-                            isLoading
-                              ? "grayscale blur-2xl scale-110"
-                              : "grayscale-0 blur-0 scale-100"
-                          )}
-                          onLoadingComplete={() => setLoading(false)}
-                          onClick={() => {
-                            lightboxRef.current?.openGallery(image.id - 1);
-                          }}
-                        />
-                      ))}
+                    {allImages.map((image) => (
+                      <Image
+                        alt=""
+                        src={image.imageSrc}
+                        width={500}
+                        height={500}
+                        className={cn(
+                          "my-4 hover:opacity-75 duration-700 ease-in-out cursor-pointer",
+                          isLoading
+                            ? "grayscale blur-2xl scale-110"
+                            : "grayscale-0 blur-0 scale-100"
+                        )}
+                        onLoadingComplete={() => setLoading(false)}
+                        onClick={() => {
+                          lightboxRef.current?.openGallery(image.id - 1);
+                        }}
+                      />
+                    ))}
                   </Masonry>
                   <LightGalleryComponent
                     onInit={(ref) => {

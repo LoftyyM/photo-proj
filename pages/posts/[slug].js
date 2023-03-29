@@ -60,28 +60,29 @@ export async function getStaticProps({ params }) {
 export default function blogPost({ post }) {
   return (
     <>
-      <div className="flex flex-col h-screen bg-fixed bg-manzana-Image bg-center bg-cover overflow-auto  ">
+      <div className="flex flex-col  bg-fixed bg-manzana-Image bg-center bg-cover overflow-auto  ">
         <DynamicHeader
           className={
             "flex justify-between items-center  relative top-0 lg:h-20 xl:h-30 sm:h-16 md:h-20 px-5"
           }
         />
-        <main className=" h-full text-red-500">
+        <main className=" h-screen px-6 py-6 text-zinc-400 bg-zinc-800">
           <div className="px-4">
-            <img className="h-32" src={post.coverPhoto.url} alt="" />
+            <img className="mx-auto h-auto pb-4 w-1/4" src={post.coverPhoto.url} alt="" />
             <div>
-              <img className="h-16" src={post.author.avatar.url} alt="" />
+              <img className="w-8" src={post.author.avatar.url} alt="" />
               <div>
                 <h6>By {post.author.name}</h6>
                 <h6>{post.datePublished}</h6>
               </div>
             </div>
-            <h2>{post.title}</h2>
+
+            <h2 className="py-6 text-xl ">{post.title}</h2>
             <div dangerouslySetInnerHTML={{ __html: post.content.html }}></div>
           </div>
         </main>
         <DynamicFooter
-          className={"flex lg:h-20 xl:h-30 sm:h-16 md:h-20 px-5 py-5"}
+          className={"flex lg:h-20 xl:h-30 sm:h-16 md:h-20 px-5 py-5 relative bottom-0"}
         />
       </div>
     </>
