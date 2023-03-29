@@ -4,11 +4,8 @@ import { GraphQLClient, gql } from "graphql-request";
 import BlogCard from "../Components/blogCard";
 import { Key } from "react";
 
-const graphcms = new GraphQLClient(
-  process.env.GRAPHCMS_URL || ""
-  );
-  
-  
+const graphcms = new GraphQLClient(process.env.GRAPHCMS_URL || "");
+
 const query = gql`
   {
     posts {
@@ -34,8 +31,7 @@ const query = gql`
 `;
 
 export async function getStaticProps() {
-
-  const { posts }:{posts:Posteos[]} = await graphcms.request(query);
+  const { posts }: { posts: Posteos[] } = await graphcms.request(query);
   return {
     props: {
       posts,
@@ -44,8 +40,7 @@ export async function getStaticProps() {
   };
 }
 
-export default function blog({posts}:{posts:Posteos[]}) {
-  
+export default function blog({ posts }: { posts: Posteos[] }) {
   return (
     <>
       <Head>
@@ -62,8 +57,7 @@ export default function blog({posts}:{posts:Posteos[]}) {
           }
         />
         <main className="grid grid-cols-2 grid-rows-2 h-full ">
-          {posts.map((post ) => (
-            
+          {posts.map((post) => (
             <BlogCard
               title={post.title}
               author={post.author}
@@ -82,13 +76,12 @@ export default function blog({posts}:{posts:Posteos[]}) {
   );
 }
 
-
 type Posteos = {
-id: Key | null | undefined;
-title: any;
-author: string;
-coverPhoto: string; 
-key: any
-datePublished: any
-slug: any
+  id: Key | null | undefined;
+  title: any;
+  author: string;
+  coverPhoto: string;
+  key: any;
+  datePublished: any;
+  slug: any;
 };
