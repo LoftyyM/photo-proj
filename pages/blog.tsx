@@ -55,7 +55,7 @@ export default function blog({ posts }: { posts: Posteos[] }) {
       <div className="flex flex-col  bg-fixed bg-manzana-Image bg-center bg-cover overflow-auto  h-screen">
         <DynamicHeader
           className={
-            " w-full px-5 bg-stone-900 overflow-hidden flex justify-between items-center relative top-0 lg:h-20 xl:h-30 sm:h-16 md:h-20 px-5"
+            " w-full px-5 bg-stone-900  flex justify-between items-center relative top-0 lg:h-20 xl:h-30 sm:h-16 md:h-20 px-5"
           }
         />
         <main className=" py-4 px-6 grid grid-cols-2 grid-rows-auto grow">
