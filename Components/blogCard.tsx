@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { twMerge } from "tailwind-merge";
 
 export default function BlogPost({
   title,
@@ -7,6 +8,8 @@ export default function BlogPost({
   datePublished,
   slug,
   description,
+  className,
+  ...props
 }: {
   title: any;
   author: any;
@@ -14,9 +17,18 @@ export default function BlogPost({
   datePublished: any;
   slug: any;
   description: string;
+  className: string;
 }) {
+
+
+  const blogCardClass = twMerge(`
+  mb-6  bg-stone-800 max-w-sm rounded-lg overflow-hidden shadow-lg
+  
+  ${className ?? ""}
+  `);
+
   return (
-    <div className=" mb-6  bg-stone-800 max-w-sm rounded-lg overflow-hidden shadow-lg">
+    <div className={blogCardClass}>
       <Link href={"/posts/" + slug}>
         <div>
           <img className="w-full" src={coverPhoto.url} alt="" />
