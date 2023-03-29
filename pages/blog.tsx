@@ -3,6 +3,7 @@ import Head from "next/head";
 import { GraphQLClient, gql } from "graphql-request";
 import BlogCard from "../Components/blogCard";
 import { Key } from "react";
+import Link from "next/link";
 
 const graphcms = new GraphQLClient(process.env.GRAPHCMS_URL || "");
 
@@ -59,21 +60,37 @@ export default function blog({ posts }: { posts: Posteos[] }) {
         />
         <main className=" py-4 px-6 grid grid-cols-2 grid-rows-auto grow">
           {posts.map((post) => (
-            <BlogCard
-              title={post.title}
-              author={post.author}
-              coverPhoto={post.coverPhoto}
-              key={post.id}
-              datePublished={post.datePublished}
-              slug={post.slug}
-              description={post.description}
-              className="mb-6
-              bg-stone-800
-              max-w-sm
-              rounded-lg
-              overflow-hidden
-              shadow-lg"
-            />
+            
+
+
+            <div className="mb-6 bg-stone-800 max-w-sm rounded-lg overflow-hidden shadow-lg">
+      <Link href={"/posts/" + post.slug}>
+        <div>
+          <img className="w-full" src={post.coverPhoto.url} alt="" />
+        </div>
+      </Link>
+
+      <div className="px-6 py-4">
+        <div className="font-bold text-xl mb-2">
+          <h2>{post.title}</h2>
+        </div>
+
+        <div className="text-zinc-200 text-xl mb-2">
+          <div className="text-red-300 pb-6"> {post.description}</div>
+
+          <div>
+            <img src={post.author.avatar.url} className="h-16 rounded-full" />
+            <h3>{post.author.name}</h3>
+          </div>
+          <div className="">
+            <h3>{post.datePublished}</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
           ))}
         </main>
 
@@ -88,8 +105,8 @@ export default function blog({ posts }: { posts: Posteos[] }) {
 type Posteos = {
   id: Key | null | undefined;
   title: any;
-  author: string;
-  coverPhoto: string;
+  author: any;
+  coverPhoto: any;
   key: any;
   datePublished: any;
   slug: any;

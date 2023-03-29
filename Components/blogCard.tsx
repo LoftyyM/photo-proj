@@ -33,7 +33,7 @@ export default function BlogPost({
   `);
 
   return (
-    <div className={blogCardClass}>
+    <div className="mb-6 bg-stone-800 max-w-sm rounded-lg overflow-hidden shadow-lg">
       <Link href={"/posts/" + slug}>
         <div>
           <img className="w-full" src={coverPhoto.url} alt="" />
