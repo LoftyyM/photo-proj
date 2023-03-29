@@ -1,7 +1,5 @@
 import Link from "next/link";
-import Head from "next/head";
 import { twMerge } from "tailwind-merge";
-import { FacebookIcon, WasaIcon, InstagramIcon } from "./icons";
 import { motion } from "framer-motion";
 
 const divMotionLeft = {

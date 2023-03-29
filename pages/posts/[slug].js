@@ -60,7 +60,7 @@ export async function getStaticProps({ params }) {
 export default function blogPost({ post }) {
   return (
     <>
-      <div className="flex flex-col overflow-auto  h-screen">
+      <div className="flex flex-col overflow-auto ">
         <DynamicHeader
           className={
             "flex justify-between items-center  relative top-0 lg:h-20 xl:h-30 sm:h-16 md:h-20 px-5"
