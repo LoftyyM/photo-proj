@@ -67,7 +67,12 @@ export default function blog({ posts }: { posts: Posteos[] }) {
               datePublished={post.datePublished}
               slug={post.slug}
               description={post.description}
-              className=""
+              className="mb-6
+              bg-stone-800
+              max-w-sm
+              rounded-lg
+              overflow-hidden
+              shadow-lg"
             />
           ))}
         </main>

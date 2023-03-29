@@ -22,7 +22,12 @@ export default function BlogPost({
 
 
   const blogCardClass = twMerge(`
-  mb-6  bg-stone-800 max-w-sm rounded-lg overflow-hidden shadow-lg
+  mb-6
+  bg-stone-800
+  max-w-sm
+  rounded-lg
+  overflow-hidden
+  shadow-lg
   
   ${className ?? ""}
   `);
